@@ -9,9 +9,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   distDir: ".next",
-  experimental: {
-    outputFileTracingRoot: process.cwd(),
-  }
+  outputFileTracingRoot: process.cwd(),
 };
 
 export default nextConfig;
