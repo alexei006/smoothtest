@@ -1,0 +1,11 @@
+{
+  "name": "smooth-bowl-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd smooth-bowl && npm run dev",
+    "build": "cd smooth-bowl && npm run build",
+    "start": "cd smooth-bowl && npm run start",
+    "lint": "cd smooth-bowl && npm run lint"
+  }
+} 
