@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useState, useEffect, Suspense } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '../../context/AuthContext';
 import { supabase } from '../../lib/supabase-client';
@@ -19,7 +19,10 @@ interface RegisterData {
   confirmPassword?: string;
 }
 
-export default function Register() {
+// Separater Client-Komponente für das Abrufen von URL-Parametern
+import { useSearchParams } from 'next/navigation';
+
+function RegisterForm() {
   const searchParams = useSearchParams();
   const refCode = searchParams.get('ref');
   
@@ -288,41 +291,24 @@ export default function Register() {
           
           <div className="mb-4">
             <label htmlFor="referralCode" className="block text-gray-700 text-sm font-bold mb-2">
-              Einladungscode (optional)
+              Empfehlungscode (optional)
             </label>
-            <div className="relative">
-              <input
-                type="text"
-                id="referralCode"
-                name="referralCode"
-                value={formData.referralCode}
-                onChange={handleChange}
-                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-                  referralValid === true ? 'border-green-500' : 
-                  referralValid === false ? 'border-red-500' : ''
-                }`}
-                placeholder="Hast du einen Einladungscode?"
-              />
-              {referralValid === true && (
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-green-500">
-                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-              )}
-              {referralValid === false && (
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-red-500">
-                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                  </svg>
-                </div>
-              )}
-            </div>
+            <input
+              type="text"
+              id="referralCode"
+              name="referralCode"
+              value={formData.referralCode}
+              onChange={handleChange}
+              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                referralValid === true ? 'border-green-500' : referralValid === false ? 'border-red-500' : ''
+              }`}
+              placeholder="CODE123"
+            />
             {referralValid === true && (
-              <p className="text-green-600 text-xs mt-1">Gültiger Code! Du erhältst 10€ Rabatt auf deine erste Bestellung.</p>
+              <p className="text-green-600 text-xs mt-1">Gültiger Empfehlungscode!</p>
             )}
             {referralValid === false && (
-              <p className="text-red-600 text-xs mt-1">Ungültiger Einladungscode.</p>
+              <p className="text-red-600 text-xs mt-1">Ungültiger Empfehlungscode</p>
             )}
           </div>
           
@@ -333,15 +319,15 @@ export default function Register() {
                 name="newsletter"
                 checked={formData.newsletter}
                 onChange={handleChange}
-                className="mr-2 leading-tight"
+                className="mr-2"
               />
-              <span className="text-sm">
-                Ich möchte den Newsletter erhalten und über Angebote informiert werden
+              <span className="text-gray-700 text-sm">
+                Ich möchte den Newsletter abonnieren
               </span>
             </label>
           </div>
           
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between">
             <button
               type="submit"
               disabled={loading}
@@ -349,25 +335,23 @@ export default function Register() {
                 loading ? 'opacity-50 cursor-not-allowed' : ''
               }`}
             >
-              {loading ? 'Registriere...' : 'Registrieren'}
+              {loading ? 'Registrierung...' : 'Registrieren'}
             </button>
-          </div>
-          
-          <p className="text-center text-gray-600 text-sm">
-            Bereits ein Konto?{' '}
-            <Link
-              href="/auth/login"
-              className="text-teal-600 hover:text-teal-800 font-semibold"
-            >
-              Jetzt anmelden
+            <Link href="/auth/login" className="inline-block align-baseline font-bold text-sm text-teal-600 hover:text-teal-800">
+              Bereits registriert?
             </Link>
-          </p>
-          
-          <p className="text-xs text-gray-600 mt-4">
-            * Pflichtfelder
-          </p>
+          </div>
         </form>
       </div>
     </div>
+  );
+}
+
+// Hauptkomponente mit Suspense-Wrapper
+export default function Register() {
+  return (
+    <Suspense fallback={<div className="container mx-auto p-4 text-center">Lädt...</div>}>
+      <RegisterForm />
+    </Suspense>
   );
 } 
