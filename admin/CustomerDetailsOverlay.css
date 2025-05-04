@@ -1,0 +1,279 @@
+/* Kundendetails Overlay Styles - mit höchster Priorität */
+
+/* Overlay Scroll-Sperre */
+body.overlay-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+  touch-action: none !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+/* Overlay */
+.customer-details-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-color: rgba(17, 24, 39, 0.6) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 1000 !important;
+  backdrop-filter: blur(2px) !important;
+  overflow: hidden !important;
+}
+
+/* Container */
+.customer-details-container {
+  width: 90% !important;
+  max-width: 800px !important;
+  background-color: #f8fafc !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin: auto !important;
+  max-height: 85vh !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
+}
+
+/* Header */
+.customer-details-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 1rem !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  background-color: white !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important;
+}
+
+.customer-details-header h2 {
+  font-size: 1.2rem !important;
+  margin: 0 !important;
+  font-weight: 600 !important;
+  color: #1e293b !important;
+}
+
+/* Button Container */
+.customer-details-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 2rem !important;
+  margin-left: auto !important;
+}
+
+/* Action Buttons */
+.edit-action-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  padding: 0.5rem 0.75rem !important;
+  background-color: #f1f5f9 !important;
+  border: none !important;
+  border-radius: 4px !important;
+  color: #3b82f6 !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  height: 36px !important;
+  min-width: 36px !important;
+}
+
+.edit-action-button:hover {
+  background-color: #e2e8f0 !important;
+}
+
+/* Close Button */
+.close-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  width: 36px !important;
+  height: 36px !important;
+  font-size: 1.1rem !important;
+  margin-left: 2rem !important;
+  color: #94a3b8 !important;
+  border-radius: 4px !important;
+  transition: all 0.2s !important;
+}
+
+.close-button:hover {
+  background-color: #f1f5f9 !important;
+  color: #64748b !important;
+}
+
+/* Content */
+.customer-details-content {
+  padding: 1.5rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.5rem !important;
+  overflow-y: auto !important;
+}
+
+/* Info Grid */
+.info-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 0 !important;
+}
+
+.info-row {
+  padding: 0.75rem 1rem !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.info-label {
+  font-weight: 500 !important;
+  color: #64748b !important;
+  width: 150px !important;
+  flex-shrink: 0 !important;
+}
+
+.info-value {
+  color: #334155 !important;
+  font-weight: 500 !important;
+  word-break: break-word !important;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  /* Overlay für Mobile */
+  .customer-details-overlay {
+    padding: 0 !important;
+    align-items: center !important;
+  }
+  
+  /* Container für Mobile */
+  .customer-details-container {
+    width: 95% !important;
+    height: auto !important;
+    max-height: 85vh !important;
+    border-radius: 8px !important;
+    margin: auto !important;
+    position: relative !important;
+  }
+  
+  /* Header für Mobile */
+  .customer-details-header {
+    padding: 0.75rem !important;
+  }
+  
+  .customer-details-header h2 {
+    font-size: 1rem !important;
+    max-width: 120px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+  
+  /* Button Container für Mobile */
+  .customer-details-actions {
+    gap: 24px !important;
+    justify-content: flex-end !important;
+    margin-left: auto !important;
+  }
+  
+  /* Buttons für Mobile */
+  .edit-action-button {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    padding: 0 !important;
+  }
+  
+  /* Text in Buttons ausblenden */
+  .edit-action-button span {
+    display: none !important;
+  }
+  
+  /* X-Button für Mobile */
+  .close-button {
+    margin-left: 24px !important;
+  }
+  
+  /* Content für Mobile */
+  .customer-details-content {
+    padding: 1rem !important;
+  }
+  
+  /* Info Grid für Mobile */
+  .info-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Informationszeilen für Mobile */
+  .info-row {
+    padding: 0.75rem !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    display: grid !important;
+    grid-template-columns: 90px 1fr !important;
+    align-items: start !important;
+    grid-gap: 5px !important;
+  }
+  
+  /* Labels für Mobile */
+  .info-label {
+    width: 100% !important;
+    font-size: 0.85rem !important;
+    padding-right: 5px !important;
+  }
+  
+  /* Werte für Mobile */
+  .info-value {
+    font-size: 0.9rem !important;
+    padding-left: 5px !important;
+    word-break: break-word !important;
+    max-height: none !important;
+  }
+  
+  /* Adress-Feld speziell für Mobile */
+  .info-row:last-child .info-value {
+    padding-bottom: 10px !important;
+    line-height: 1.4 !important;
+    max-height: none !important;
+  }
+}
+
+/* iOS-Scrollfix */
+@supports (-webkit-touch-callout: none) {
+  .customer-details-container {
+    -webkit-overflow-scrolling: touch !important;
+    overflow-y: scroll !important;
+  }
+  
+  @media (max-width: 768px) {
+    body.overlay-open {
+      position: fixed !important;
+      width: 100% !important;
+      height: 100% !important;
+      overflow: hidden !important;
+      top: 0 !important;
+      left: 0 !important;
+    }
+    
+    .customer-details-container {
+      height: 80vh !important;
+      overflow-y: scroll !important;
+      position: absolute !important;
+      bottom: 0 !important;
+    }
+  }
+} 
