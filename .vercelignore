@@ -1,1 +1,3 @@
-src/app
+# Ignoriere nur node_modules und Cache-Verzeichnisse
+node_modules
+.next
