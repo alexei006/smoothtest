@@ -1,45 +1,36 @@
-# Smooth Bowl - IONOS Hosting Anleitung
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Dateien für IONOS Hosting
+## Getting Started
 
-Diese Dateien dienen dem Hosting Ihrer Website bei IONOS:
+First, run the development server:
 
-- `index.html` - Hauptdatei mit dem Grundgerüst Ihrer Website
-- `index.php` - PHP-Einstiegspunkt (leitet derzeit zur HTML-Version weiter)
-- `.htaccess` - Konfigurationsdatei für Apache-Server
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## Anleitung zum Hochladen bei IONOS
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Methode 1: Über den Webspace Explorer (einfach)
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-1. Melden Sie sich bei IONOS an und öffnen Sie den Webspace Explorer
-2. Klicken Sie auf "Hochladen" 
-3. Wählen Sie die Dateien aus diesem Ordner aus (index.html, index.php, .htaccess)
-4. Klicken Sie auf "Öffnen", um die Dateien hochzuladen
-5. Verbinden Sie Ihre Domain mit dem Hauptverzeichnis über "Verzeichnis mit Domain verbinden"
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### Methode 2: Via FTP (empfohlen für größere Projekte)
+## Learn More
 
-1. Laden Sie einen FTP-Client wie [FileZilla](https://filezilla-project.org/) herunter
-2. In Ihrem IONOS-Konto finden Sie die FTP-Zugangsdaten
-3. Verbinden Sie sich mit dem FTP-Server
-4. Laden Sie die Dateien in das Hauptverzeichnis hoch
-5. Verbinden Sie Ihre Domain mit dem Verzeichnis in Ihrem IONOS Control Panel
+To learn more about Next.js, take a look at the following resources:
 
-## Domain mit Verzeichnis verbinden
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-1. Im IONOS Control Panel: Gehen Sie zu "Hosting"
-2. Wählen Sie Ihre Domain aus
-3. Klicken Sie auf "Domainverwaltung"
-4. Wählen Sie "Domain mit Verzeichnis verbinden"
-5. Wählen Sie das Verzeichnis, in dem Ihre Dateien liegen
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Nächste Schritte für Ihre Next.js Anwendung
+## Deploy on Vercel
 
-Um später Ihre vollständige Next.js Anwendung zu hosten:
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-1. Bauen Sie Ihre Anwendung mit `npm run build`
-2. Verwenden Sie die Dateien aus dem `.next`-Ordner
-3. Konfigurieren Sie IONOS für eine Node.js-Anwendung (falls verfügbar)
-
-Alternativ können Sie statische Exporte erstellen oder einen anderen Hosting-Dienst für Next.js in Betracht ziehen. 
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
