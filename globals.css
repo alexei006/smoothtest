@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-teal-600 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-teal-700 transition duration-300;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-teal-600 font-semibold py-2 px-4 rounded-lg shadow border border-teal-600 hover:bg-teal-50 transition duration-300;
+  }
+  
+  .editable-field {
+    @apply bg-white border-gray-300 focus:border-teal-500 cursor-text hover:border-gray-400;
+  }
+  
+  .profile-card {
+    @apply bg-white rounded-lg shadow-lg border border-gray-200;
+  }
+  
+  .profile-section {
+    @apply border-b border-gray-200 pb-4 mb-4 last:border-b-0 last:mb-0 last:pb-0;
+  }
+  
+  .profile-input {
+    @apply w-full rounded-md border border-gray-300 shadow-sm py-2 px-3 focus:border-teal-500 focus:ring focus:ring-teal-200 focus:ring-opacity-50;
+  }
+} 
